@@ -1,0 +1,1 @@
+zikaReads.fastq : pAM04528-Salmonella_enterica (of 1 total hits)
