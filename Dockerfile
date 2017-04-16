@@ -8,7 +8,9 @@ RUN apt-get install -y git make g++ gcc \
     curl \
     python-pip \
     libgsl0-dev \
-    zlib1g-dev
+    zlib1g-dev \
+    libpq-dev \
+    postgresql
 
 ADD requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
@@ -33,4 +35,4 @@ ADD . /epimobile
 WORKDIR /epimobile
 
 EXPOSE 5000
-CMD ["python3", "src/app.py"]
+CMD ["python", "src/app.py"]
