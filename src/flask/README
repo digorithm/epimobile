@@ -1,0 +1,19 @@
+1) install Flask by:
+pip install Flask
+
+2) go to flask directory and run:
+python app.py
+
+3) open a browser and go to:
+http://localhost:5000/
+
+4) dummy credentials are as follows:
+username: test
+password: test
+
+5) first table shows the sequences that are stored on the local device. i assumed that all fasta files are in the folderand flask/fasta.
+	- if the result is stored in the local db, it will show the outcome, e.g. positive/negative
+	- if there is no result for it yet, it will show 'Analyze' button
+	- when you hit 'Analyze button', it sends a post request to the server with sequence ID to trigger analysis
+
+6) second table shows the results stored in the local db. here we need to add a db connection and fetch the results.
