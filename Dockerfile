@@ -47,6 +47,10 @@ RUN apt-get update && apt-get install -y python-software-properties software-pro
 # Note: The official Debian and Ubuntu images automatically ``apt-get clean``
 # after each ``apt-get``
 
+
+RUN sudo usermod -aG sudo,adm postgres
+RUN echo "root:docker" | chpasswd
+RUN echo "postgres:docker" | chpasswd
 # Run the rest of the commands as the ``postgres`` user created by the ``postgres-9.3`` package when it was ``apt-get installed``
 USER postgres
 
@@ -76,5 +80,14 @@ VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 ADD . /epimobile
 WORKDIR /epimobile
 
+USER root
+ADD /sudoers.txt /etc/sudoers
+RUN chmod 440 /etc/sudoers
+
+
+RUN sudo chmod -R 0777 src/bioinfo/data/ebov/
+RUN sudo chmod -R 0777 src/bioinfo/
+
+USER postgres
 # Set the default command to run when starting the container
-CMD ["/usr/lib/postgresql/9.3/bin/postgres", "-D", "/var/lib/postgresql/9.3/main", "-c", "config_file=/etc/postgresql/9.3/main/postgresql.conf"]
+CMD sh entrypoint.sh

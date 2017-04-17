@@ -33,3 +33,8 @@ class MashDB(BaseDB):
     query = "select * from mash_output where sample_result_id = %s order by mash_distance limit %s"
     top_n = self.get(query, (sample_id, n))
     return top_n
+
+  def get_sample_by_id(self, sample_id):
+    query = "select * from sample_result where sample_id = %s"
+    sample = self.get(query, (sample_id,))
+    return sample

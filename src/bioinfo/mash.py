@@ -4,6 +4,7 @@ import subprocess
 import hashlib
 from database.mash_db import MashDB
 import re
+import ntpath
 
 class Mash(object):
   
@@ -34,8 +35,9 @@ class Mash(object):
     cmd = 'mash dist {} {}.msh > {}/output/{}_distances.tab'.format(self.reference_db, file_path, os.path.dirname(os.path.abspath(__file__)), os.path.basename(file_path))
 
     out = subprocess.check_output(cmd, shell=True)
-
-    file_hash = hashlib.md5(file_path.encode())
+    
+    filename = ntpath.basename(file_path)
+    file_hash = hashlib.md5(filename.encode())
     sample_id = self.mash_db.save_sample_result(file_hash.hexdigest())
 
     self.save_output(file_path, sample_id)
