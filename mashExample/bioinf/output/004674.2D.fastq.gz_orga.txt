@@ -1,1 +1,0 @@
-004674.2D.fastq.gz : Candidatus_Pelagibacter_sp._IMCC9063 (of 1 total hits)

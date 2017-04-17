@@ -1,1 +1,0 @@
-013576.2D.fastq.gz : GCF_000271325.1-.-Solibacillus_silvestris_StLB046 (of 1 total hits)

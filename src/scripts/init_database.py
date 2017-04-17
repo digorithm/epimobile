@@ -27,8 +27,7 @@ else:
         "WITH OWNER = {} "
         "ENCODING = 'UTF8' "
         "TABLESPACE = pg_default "
-        "LC_COLLATE = 'en_US.UTF-8' "
-        "LC_CTYPE = 'en_US.UTF-8' "
+        "TEMPLATE template0 "
         "CONNECTION LIMIT = -1;".format(DATABASE_NAME, POSTGRESQL_USER))
   
   conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
