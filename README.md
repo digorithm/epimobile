@@ -32,7 +32,9 @@ After you've installed docker, run:
 
 1. `docker build -t epimobile:latest .`
 
-2. `docker run -p 5000:5000 epimobile`
+2. `docker volume create --name dbdata`
+
+3. `docker run -v dbdata:/var/lib/postgresql -p 5000:5000 epimobile`
 
 If you want to run /bin/bash *inside* the container:
 
