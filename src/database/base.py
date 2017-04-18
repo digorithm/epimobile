@@ -1,10 +1,8 @@
 import psycopg2
+import config
 
-# TODO: extract this to a config file
-# TODO: this is extremely coupled with the postgresql, make it loosely coupled in the future
-
-DATABASE_NAME = "epimobile"
-POSTGRESQL_USER = "rodrigo"
+DATABASE_NAME = config.DATABASE_NAME
+POSTGRESQL_USER = config.POSTGRESQL_USER
 
 class BaseDB(object):
 

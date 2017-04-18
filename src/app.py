@@ -7,9 +7,20 @@ import hashlib
 from database.mash_db import MashDB
 from bioinfo.mash import Mash
 
+class ResultsEntry:
+    def __init__(self, ID, highest_hits, wasAnalyzed):
+        self.id = ID # entry id
+        self.highest_hits = highest_hits
+        self.wasAnalyzed = wasAnalyzed
+
+
 app = Flask(__name__, template_folder='views/templates', static_folder='views/static')
-fastaFilesDir = 'bioinfo/data/ebov/'
+fastaFilesDir = 'src/bioinfo/data/ebov/'
+
 mdb = MashDB()
+
+# TODO: 3 or greater out of 400, include in results, otherwise no hits
+# TODO: Fix path things, make sure it's working
 
 @app.route('/')
 def main():
@@ -30,14 +41,6 @@ def validateSignIn():
     else:
         return 'Wrong credentials. Try again.'
 
-
-class ResultsEntry:
-    def __init__(self, ID, highest_hits, wasAnalyzed):
-        self.id = ID # entry id
-        self.highest_hits = highest_hits
-        self.wasAnalyzed = wasAnalyzed
-
-
 @app.route('/dashboard')
 def showDashboard():
 
@@ -56,7 +59,7 @@ def showDashboard():
         result = mdb.get_sample_by_id(file_hash)
         if len(result) != 0:
             highest_hits = result[0][2].split(",")
-            local_files_table.append(ResultsEntry(file, highest_hits, True))
+            local_files_table.append(ResultsEntry(file, highest_hits[0], True))
         else:
             local_files_table.append(ResultsEntry(file, 'N/A', False))
 
@@ -69,7 +72,7 @@ def analyze():
 
     mash = Mash()
 
-    mash.set_reference_db("bioinfo/data/RefSeqSketches.msh")
+    mash.set_reference_db("src/bioinfo/data/RefSeqSketches.msh")
 
     mash.run_mash(join(fastaFilesDir, _seqID))
 

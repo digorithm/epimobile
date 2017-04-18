@@ -50,9 +50,7 @@
           <td>{{ item.id }} </td> 
           <td>
             {% if item.wasAnalyzed %}
-            {% for hit in item.highest_hits %} 
-            <button type="button" class="btn btn-danger">{{ hit }}</button>
-            {% endfor %}
+            <button type="button" class="btn btn-danger">{{ item.highest_hits}}</button>
             {% else %}
             <button type="button" class="btn btn-primary">{{ item.highest_hits }}</button>
             {% endif %}

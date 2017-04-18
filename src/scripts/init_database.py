@@ -3,7 +3,7 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import sys
 
 DATABASE_NAME = "epimobile"
-POSTGRESQL_USER = "rodrigo"
+POSTGRESQL_USER = "postgres"
 
 try:
   # Check if database already exists
@@ -21,7 +21,6 @@ except psycopg2.DatabaseError, e:
 
 if db_exists:
   print "Epimobile DB already exists"
-  sys.exit(1)
 else:
   db = ("CREATE DATABASE {} "
         "WITH OWNER = {} "

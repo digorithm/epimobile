@@ -69,6 +69,10 @@ RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.3/main/pg_hba.co
 # And add ``listen_addresses`` to ``/etc/postgresql/9.3/main/postgresql.conf``
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.3/main/postgresql.conf
 
+ENV PG_VERSION 9.3
+ENV PGDATA /var/lib/postgresql/$PG_VERSION/main
+ENV PGRUN /var/run/postgresql
+
 # Expose the PostgreSQL port
 EXPOSE 5432
 
@@ -87,6 +91,9 @@ RUN chmod 440 /etc/sudoers
 
 RUN sudo chmod -R 0777 src/bioinfo/data/ebov/
 RUN sudo chmod -R 0777 src/bioinfo/
+
+ENV DATABASE_NAME epimobile
+ENV POSTGRESQL_USER postgres
 
 USER postgres
 # Set the default command to run when starting the container

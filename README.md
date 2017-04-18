@@ -2,15 +2,15 @@
 
 Before everything: run script `init_database.py` from `scripts` folder
 
-- From `src` folder, launch `python` from the command line
+- From root folder, launch `python` from the command line
 
-- `from bioinfo.mash import Mash`
+- `from src.bioinfo.mash import Mash`
 
 - `mash = Mash()`
 
-- `mash.set_reference_db("bioinfo/data/RefSeqSketches.msh")`
+- `mash.set_reference_db("src/bioinfo/data/RefSeqSketches.msh")`
 
-- `mash.run_mash("bioinfo/data/ebov/004674.2D.fastq.gz")`
+- `mash.run_mash("src/bioinfo/data/ebov/004674.2D.fastq.gz")`
 
 This should output:
 
