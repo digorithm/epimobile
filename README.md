@@ -1,3 +1,27 @@
+# Running Epimobile using Docker (easier if you have Docker installed)
+
+After you've installed docker, run:
+
+1. `docker build -t epimobile:latest .`
+
+2. `docker volume create --name dbdata`
+
+3. `docker run -v dbdata:/var/lib/postgresql -p 5000:5000 epimobile`
+
+If you want to run /bin/bash *inside* the container:
+
+`docker run -i -t --rm epimobile /bin/bash`
+
+
+# Running Epimobile without using Docker
+
+1. Make sure you have all the dependencies by checking the `requirements.txt` and `Dockerfile`
+
+2. Run the script `init_database.py` in the database folder (make sure you have postgresql installed)
+
+3. run `app.py`
+
+
 # Testing the bioinformatics module
 
 Before everything: run script `init_database.py` from `scripts` folder
@@ -25,17 +49,3 @@ Total hits: 10
 
 And your PostgreSQL instance must be populated with the mash output for this DNA Sample.
 
-
-## Running Epimobile using Docker 
-
-After you've installed docker, run:
-
-1. `docker build -t epimobile:latest .`
-
-2. `docker volume create --name dbdata`
-
-3. `docker run -v dbdata:/var/lib/postgresql -p 5000:5000 epimobile`
-
-If you want to run /bin/bash *inside* the container:
-
-`docker run -i -t --rm epimobile /bin/bash`

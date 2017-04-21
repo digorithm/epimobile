@@ -47,6 +47,7 @@ else:
   sample_result_table = ("CREATE TABLE sample_result ("
                          "id serial NOT NULL,"
                          "sample_id varchar(45) NOT NULL,"
+                         "globally_shared bool default false,"
                          "highest_match text);")
 
   mash_output_table   = ("CREATE TABLE mash_output ("

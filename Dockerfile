@@ -10,7 +10,8 @@ RUN apt-get install -y git make g++ gcc \
     python-pip \
     libgsl0-dev \
     zlib1g-dev \
-    libpq-dev
+    libpq-dev \
+    libbluetooth-dev
 
 ADD requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt

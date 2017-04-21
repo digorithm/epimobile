@@ -34,6 +34,7 @@ def signIn():
 def validateSignIn():
     _userName = request.form['userName']
     _password = request.form['inputPassword']
+    
     # validate the received values
     if _userName=='test' and _password=='test':
         return redirect(url_for('showDashboard'))
