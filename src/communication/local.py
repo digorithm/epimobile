@@ -18,7 +18,20 @@ class MessageItem(object):
     self.data = unit['data']
 
 class Message(object):
-  # TODO: Document this data structure
+  """
+  Data structure that holds a message used to transfer data between peers, it follows a JSON strcture:
+
+  {
+    "message": [
+      {
+        "type": <"sample">||<"update">,
+        "data": [<"sample_id">, <"highest_matches">||<"globally_shared">]
+       },
+       ...
+    ]
+    "sender": <"bd_addr">
+  }
+  """
   def __init__(self, data):
     json_data = json.loads(data)
     self.message = json_data['message']
