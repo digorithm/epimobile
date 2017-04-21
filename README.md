@@ -1,6 +1,19 @@
+# About Epimobile
+
+Rapid identification of disease causing infectious agents (pathogens) in patients is important to enable rapid responses to potential, or ongoing, outbreaks. New advances in genomic sequencing technologies are enabling more effective point-of-care diagnosis -- where patient samples can be analyzed for the detection of pathogen DNA. However, it has yet to be understood how these technologies can be applied in the field and under resource constraints that hinder cloud access for computation. Here we present EpiMobile, a conceptual model and minimal viable product (MVP) implementation of a genomics point-of-care workflow using mobile devices. EpiMobile enables analyses of genomic data harvested by a portable genome sequencer and the distribution of the results to local clinical or healthcare teams as well as national, or global, public health agencies, whilst considering computational processing and Internet connectivity resource constraints. Our evaluation of EpiMobile indicates that it has a minimal resource consumption footprint and is accurate when run of a dataset with known outcomes. However, we emphasize that the conceptual and exploratory nature of our work affects to what extent our results would map to real world settings. We discuss the utility of EpiMobile through a set of usage scenarios currently supported by our MVP implementation. We believe that our work provides an interesting overview of an exciting and emerging application contexts as well as proposing an interesting implementation of genomics point-of-care. 
+
 # Running Epimobile using Docker (easier if you have Docker installed)
 
-After you've installed docker, run:
+If you don't want to build the image from scratch (since it could take a while), you can just pull the final docker image and run it:
+
+1. `docker pull digorithm/epimobile`
+
+2. `docker volume create --name dbdata`
+
+3. `docker run -v dbdata:/var/lib/postgresql -p 5000:5000 epimobile`
+
+
+Or if you want to build the image from scratch, run:
 
 1. `docker build -t epimobile:latest .`
 
