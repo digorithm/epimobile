@@ -49,3 +49,18 @@ Total hits: 10
 
 And your PostgreSQL instance must be populated with the mash output for this DNA Sample.
 
+# Current features
+
+- Complete end-to-end system to analyze blood sample and find pathogens
+
+- Analyzis can be performed by using a simple web UI
+
+- Although the UI is web based, no internet connection is required, it will be running on local host
+
+- All data and all mash output is stored in an easy to use database
+
+
+# Future
+
+- Finish communication module: allow local devices to share their analyzes (halfway finished) and allow global shared with remote server
+
