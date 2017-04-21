@@ -84,13 +84,16 @@ class LocalCommunication(object):
     server_sock.close()
 
   def handle_message(self, msg):
-
+    # TODO? Send Ack to sender? How reliable is bluetooth?? Gotta look into that
     for item in msg.items:
 
       if item.type == "sample":
-        print "I will add this sample to the db"
         self.mash_db.save_sample_result(item.sample_id, item.highest_matches)
 
       elif item.type == "update":
-        print "If I have this ID, I will update, otherwise I will ignore"
+        sample = self.mash_db.get_sample_by_id(item.sample_id)
+        import pdb; pdb.set_trace()
+        if sample is not None:
+          self.mash_db.update_globally_shared_status(item.sample_id, item.globally_shared)
+
 

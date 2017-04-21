@@ -25,9 +25,9 @@ class MashDB(BaseDB):
     self.cur.execute(query + query_args)
     self.conn.commit()
 
-  def update_sample_result(self, id, highest_match):
-    query = "update sample_result set highest_match = %s where id = %s"
-    self.update(query, (highest_match, id))
+  def update_sample_result(self, sample_id, highest_match):
+    query = "update sample_result set highest_match = %s where sample_id = %s"
+    self.update(query, (highest_match, sample_id))
   
   def get_top_n_mash_results(self, sample_id, n=10):
     query = "select * from mash_output where sample_result_id = %s order by mash_distance limit %s"
@@ -38,3 +38,7 @@ class MashDB(BaseDB):
     query = "select * from sample_result where sample_id = %s"
     sample = self.get(query, (sample_id,))
     return sample
+
+  def update_globally_shared_status(self, sample_id, globally_shared):
+    query = "update sample_result set globally_shared = %s where sample_id = %s"
+    self.update(query, (globally_shared, sample_id))
